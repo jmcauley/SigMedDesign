@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>Appointments</title>
+  <meta charset="utf-8">
+  
+  <!-- Global stylesheets -->
+  <link href="css/reset.css" rel="stylesheet" type="text/css">
+  <link href="css/common.css" rel="stylesheet" type="text/css">
+  <link href="css/form.css" rel="stylesheet" type="text/css">
+  <link href="css/standard.css" rel="stylesheet" type="text/css">
+  
+  <!-- Comment/uncomment one of these files to toggle between fixed and fluid layout -->
+  <!--<link href="css/960.gs.css" rel="stylesheet" type="text/css">-->
+  <link href="css/960.gs.fluid.css" rel="stylesheet" type="text/css">
+  <link href="css/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css">
+  
+  <!-- Custom styles -->
+  <link href="css/simple-lists.css" rel="stylesheet" type="text/css">
+  <link href="css/block-lists.css" rel="stylesheet" type="text/css">
+  <link href="css/table.css" rel="stylesheet" type="text/css">
+  <link href="css/calendars.css" rel="stylesheet" type="text/css">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon-large.png">
+  
+  <!-- Generic libs -->
+  <script type="text/javascript" src="js/html5.js"></script>        <!-- this has to be loaded before anything else -->
+  <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="js/old-browsers.js"></script>   <!-- remove if you do not need older browsers detection -->
+  
+  <!-- Template libs -->
+  <script type="text/javascript" src="js/jquery.accessibleList.js"></script>
+  <script type="text/javascript" src="js/searchField.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+  <script type="text/javascript" src="js/standard.js"></script>
+  <!--[if lte IE 8]><script type="text/javascript" src="js/standard.ie.js"></script><![endif]-->
+  <script type="text/javascript" src="js/jquery.tip.js"></script>
+  <script type="text/javascript" src="js/jquery.hashchange.js"></script>
+  <script type="text/javascript" src="js/jquery.contextMenu.js"></script>
+  
+  <!-- Custom styles lib -->
+  <script type="text/javascript" src="js/list.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.8.6.custom.min.js"></script>
+  
+  <!-- Charts library -->
+  <!--Load the AJAX API-->
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+      showOn: "button",
+      buttonImage: "images/calendar.gif",
+      buttonImageOnly: true
+    });
+  });
+  </script>
+  
+  <script type="text/javascript">
+    $(function (){
+        $('a.ajax').click(function() {
+            var url = '/scheduler_form_selection.html';
+            var dialog = $('<div style="display:hidden"></div>').appendTo('body');
+            // load remote content
+            dialog.load(
+                url, 
+                {},
+                function (responseText, textStatus, XMLHttpRequest) {
+                    dialog.dialog({
+                      width: 600,
+                      modal: true
+                    });
+                }
+            );
+            //prevent the browser to follow the link
+            return false;
+        });
+    });
+  </script>
+
+</head>
+
+<body>
+<!-- The template uses conditional comments to add wrappers div for ie8 and ie7 - just add .ie or .ie7 prefix to your css selectors when needed -->
+<!--[if lt IE 9]><div class="ie"><![endif]-->
+<!--[if lt IE 8]><div class="ie7"><![endif]-->
+  
+  <!-- Header -->
+  
+  <!-- Server status -->
+  <header><div class="container_12">
+    <div class="server-info">Version: <strong>SigMed Admin 2.2.14</strong></div>
+    
+  </div></header>
+  <!-- End server status -->
+
+  <!-- Main nav -->
+  <nav id="main-nav">
+    
+    <ul class="container_12">
+      <li class="home current"><a href="#" title="Home">Home</a>
+      </li>
+    </ul>
+  </nav>
+  <!-- End main nav -->
+  
+  <!-- Sub nav -->
+  <div id="sub-nav"><div class="container_12">
+    
+    <a href="#" title="Help" class="nav-button"><b>Help</b></a>
+  
+    <form id="search-form" name="search-form" method="post" action="search.html">
+      <input type="text" name="s" id="s" value="" title="Search admin..." autocomplete="off">
+    </form>
+  
+  </div></div>
+  <!-- End sub nav -->
+  
+  <!-- Status bar -->
+  <div id="status-bar"><div class="container_12">
+  
+    <ul id="status-infos">
+      <li class="spaced">Logged as: <strong>Admin</strong></li>
+      <li><a href="login.html" class="button red" title="Logout"><span class="smaller">LOGOUT</span></a></li>
+    </ul>
+    
+    <ul id="breadcrumb">
+      <li><a href="#" title="Home">Home</a></li>
+      <li><a href="#" title="Appointments">Appointments</a></li>
+    </ul>
+  
+  </div></div>
+  <!-- End status bar -->
+  
+  <div id="header-shadow"></div>
+  <!-- End header -->
+  
+  
+  <!-- Content -->
+
+  <article class="container_12">
+    <section class="grid_4">
+
+          <ul class="message no-margin">
+            <li>Appointment Date: <input type="text" id="datepicker" value="11/5/2010"/></li>
+          </ul>
+  
+    </section>
+    <div class="clear"></div>
+    <section class="grid_3">
+      <div class="block-border"><div class="block-content">
+        <h1>Waters NPD, Alice</h1>
+        
+        <ul class="message no-margin">
+          <li>5 appointments found</li>
+        </ul>
+        
+        <div class="no-margin">
+          <table cellspacing="0" class="list-calendar">
+            <tbody>
+              <tr>
+                <td>
+                  <ul class="events">
+                    <li><a class="ajax" href="#"><b>9:15</b> Titan Lachrymose</a></li>
+                    <li><a href="#"><b>9:45</b> Johson Masters</a></li>
+                    <li><a href="#"><b>10:45</b> Sarah Turnbull</a></li>
+                    <li><a href="#"><b>11:15</b> Leslie Wakeum</a></li>
+                    <li><a href="#"><b>11:45</b> Shawn Wallace</a></li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      
+      </div></div>
+    </section>
+    
+    <section class="grid_3">
+      <div class="block-border"><div class="block-content">
+        <h1>Smith MD, Alan</h1>
+        
+        <ul class="message no-margin">
+          <li>4 appointments found</li>
+        </ul>
+        
+        <div class="no-margin">
+          <table cellspacing="0" class="list-calendar">
+            <tbody>
+              <tr>
+                <td>
+                  <ul class="events">
+                    <li><a href="#"><b>9:00</b> John Lorenzo</a></li>
+                    <li><a href="#"><b>9:30</b> Alice Stafford</a></li>
+                    <li><a href="#"><b>9:45</b> Miftune Seagall</a></li>
+                    <li><a href="#"><b>10:30</b> Jeff Abbey</a></li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      
+      </div></div>
+    </section>
+    
+    <section class="grid_3">
+      <div class="block-border"><div class="block-content">
+        <h1>LPN</h1>
+        
+        <ul class="message no-margin">
+          <li>8 appointments found</li>
+        </ul>
+        
+        <div class="no-margin">
+          <table cellspacing="0" class="list-calendar">
+            <tbody>
+              <tr>
+                <td>
+                  <ul class="events">
+                    <li><a href="#"><b>9:00</b> Sam Rockwell</a></li>
+                    <li><a href="#"><b>9:30</b> Liz Borden</a></li>
+                    <li><a href="#"><b>10:30</b> Alain Trousannt</a></li>
+                    <li><a href="#"><b>11:00</b> Mo Digence</a></li>
+                    <li><a href="#"><b>11:30</b> Frank Lormand</a></li>
+                    <li><a href="#"><b>12:00</b> Faye Lester</a></li>
+                    <li><a href="#"><b>12:30</b> Leah Tolliver</a></li>
+                    <li><a href="#"><b>13:00</b> Frank Lormand</a></li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      
+      </div></div>
+    </section>
+    
+    
+    <div class="clear"></div>
+    
+  </article>
+  
+  <!-- End content -->
+  
+  <footer>
+    
+    <div class="float-left">
+      <a href="#" class="button">Help</a>
+      <a href="#" class="button">About</a>
+    </div>
+    
+    <div class="float-right">
+      <a href="#top" class="button"><img src="images/icons/fugue/navigation-090.png" width="16" height="16"> Page top</a>
+    </div>
+    
+  </footer>
+
+<!--[if lt IE 8]></div><![endif]-->
+<!--[if lt IE 9]></div><![endif]-->
+</body>
+</html>

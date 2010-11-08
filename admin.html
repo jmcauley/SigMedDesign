@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>Forms Administration</title>
+  <meta charset="utf-8">
+  
+  <!-- Global stylesheets -->
+  <link href="css/reset.css" rel="stylesheet" type="text/css">
+  <link href="css/common.css" rel="stylesheet" type="text/css">
+  <link href="css/form.css" rel="stylesheet" type="text/css">
+  <link href="css/standard.css" rel="stylesheet" type="text/css">
+  
+  <!-- Comment/uncomment one of these files to toggle between fixed and fluid layout -->
+  <!--<link href="css/960.gs.css" rel="stylesheet" type="text/css">-->
+  <link href="css/960.gs.fluid.css" rel="stylesheet" type="text/css">
+  
+  <!-- Custom styles -->
+  <link href="css/simple-lists.css" rel="stylesheet" type="text/css">
+  <link href="css/block-lists.css" rel="stylesheet" type="text/css">
+  <link href="css/table.css" rel="stylesheet" type="text/css">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon-large.png">
+  
+  <!-- Generic libs -->
+  <script type="text/javascript" src="js/html5.js"></script>        <!-- this has to be loaded before anything else -->
+  <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="js/old-browsers.js"></script>   <!-- remove if you do not need older browsers detection -->
+  
+  <!-- Template libs -->
+  <script type="text/javascript" src="js/jquery.accessibleList.js"></script>
+  <script type="text/javascript" src="js/searchField.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+  <script type="text/javascript" src="js/standard.js"></script>
+  <!--[if lte IE 8]><script type="text/javascript" src="js/standard.ie.js"></script><![endif]-->
+  <script type="text/javascript" src="js/jquery.tip.js"></script>
+  <script type="text/javascript" src="js/jquery.hashchange.js"></script>
+  <script type="text/javascript" src="js/jquery.contextMenu.js"></script>
+  
+  <!-- Custom styles lib -->
+  <script type="text/javascript" src="js/list.js"></script>
+  
+  <!-- Charts library -->
+  <!--Load the AJAX API-->
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  
+  
+</head>
+
+<body>
+<!-- The template uses conditional comments to add wrappers div for ie8 and ie7 - just add .ie or .ie7 prefix to your css selectors when needed -->
+<!--[if lt IE 9]><div class="ie"><![endif]-->
+<!--[if lt IE 8]><div class="ie7"><![endif]-->
+  
+  <!-- Header -->
+  
+  <!-- Server status -->
+  <header><div class="container_12">
+    <div class="server-info">Version: <strong>SigMed Admin 2.2.14</strong></div>
+    
+  </div></header>
+  <!-- End server status -->
+
+  <!-- Main nav -->
+  <nav id="main-nav">
+    
+    <ul class="container_12">
+      <li class="home current"><a href="#" title="Home">Home</a>
+      </li>
+    </ul>
+  </nav>
+  <!-- End main nav -->
+  
+  <!-- Sub nav -->
+  <div id="sub-nav"><div class="container_12">
+    
+    <a href="#" title="Help" class="nav-button"><b>Help</b></a>
+  
+    <form id="search-form" name="search-form" method="post" action="search.html">
+      <input type="text" name="s" id="s" value="" title="Search admin..." autocomplete="off">
+    </form>
+  
+  </div></div>
+  <!-- End sub nav -->
+  
+  <!-- Status bar -->
+  <div id="status-bar"><div class="container_12">
+  
+    <ul id="status-infos">
+      <li class="spaced">Logged as: <strong>Admin</strong></li>
+      <li><a href="login.html" class="button red" title="Logout"><span class="smaller">LOGOUT</span></a></li>
+    </ul>
+    
+    <ul id="breadcrumb">
+      <li><a href="#" title="Home">Home</a></li>
+      <li><a href="#" title="Forms">Forms</a></li>
+    </ul>
+  
+  </div></div>
+  <!-- End status bar -->
+  
+  <div id="header-shadow"></div>
+  <!-- End header -->
+  
+  
+  <!-- Content -->
+  <article class="container_12">
+    
+    <section class="grid_2">
+      <!--<div class="block-border"><div class="block-content">-->
+        <h1>SigMed Administration</h1>
+        
+        <ul class="favorites no-margin with-tip" title="Administration">
+          
+          <li>
+            <img src="images/icons/web-app/48/Modify.png" width="48" height="48">
+            <a href="#">Forms Setup<br>
+            <small>System &gt; Forms</small></a>
+          </li>
+          
+          <li></li>
+          
+        </ul>
+        
+      <!--</div></div>-->
+    </section>
+    
+    <section class="grid_10">
+      <div class="block-border"><form class="block-content form" id="table_form" method="post" action="">
+        <h1>Available Forms</h1>
+        
+        <div class="block-controls">
+          
+          <ul class="controls-buttons">
+            <li><a href="#" title="Previous"><img src="images/icons/fugue/navigation-180.png" width="16" height="16"> Prev</a></li>
+            <li><a href="#" title="Page 1"><b>1</b></a></li>
+            <li><a href="#" title="Page 2" class="current"><b>2</b></a></li>
+            <li><a href="#" title="Page 3"><b>3</b></a></li>
+            <li><a href="#" title="Page 4"><b>4</b></a></li>
+            <li><a href="#" title="Page 5"><b>5</b></a></li>
+            <li><a href="#" title="Next">Next <img src="images/icons/fugue/navigation.png" width="16" height="16"></a></li>
+            <li class="sep"></li>
+            <li><a href="#"><img src="images/icons/fugue/arrow-circle.png" width="16" height="16"></a></li>
+          </ul>
+          
+        </div>
+      
+        <div class="no-margin"><table class="table" cellspacing="0" width="100%">
+        
+          <thead>
+            <tr>
+              <th scope="col">
+                <span class="column-sort">
+                  <a href="#" title="Sort up" class="sort-up active"></a>
+                  <a href="#" title="Sort down" class="sort-down"></a>
+                </span>
+                Name
+              </th>
+              <th scope="col">Frequency (months)</th>
+              <th scope="col">Description</th>
+              <th scope="col" class="table-actions">Actions</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            
+            <tr>
+              <td>Consent For Treatment</td>
+              <td>0</td>
+              <td>Basic Consent and Disclosure</td>
+              <td class="table-actions">
+                <a href="#" title="Edit" class="with-tip"><img src="images/icons/fugue/pencil.png" width="16" height="16"></a>
+                <a href="#" title="Delete" class="with-tip"><img src="images/icons/fugue/cross-circle.png" width="16" height="16"></a>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>Financial Responsibility</td>
+              <td>0</td>
+              <td>Agreement to pay for services rendered</td>
+              <td class="table-actions">
+                <a href="#" title="Edit" class="with-tip"><img src="images/icons/fugue/pencil.png" width="16" height="16"></a>
+                <a href="#" title="Delete" class="with-tip"><img src="images/icons/fugue/cross-circle.png" width="16" height="16"></a>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>HIPPA Disclosure</td>
+              <td>6</td>
+              <td>Privacy Statement and policies</td>
+              <td class="table-actions">
+                <a href="#" title="Edit" class="with-tip"><img src="images/icons/fugue/pencil.png" width="16" height="16"></a>
+                <a href="#" title="Delete" class="with-tip"><img src="images/icons/fugue/cross-circle.png" width="16" height="16"></a>
+              </td>
+            </tr>
+          </tbody>
+        
+        </table></div>
+        
+        <ul class="message no-margin">
+          <li>Results 1 - 3 out of 3</li>
+        </ul>
+          
+      </form></div>
+      
+      <div class="block-border"><form class="block-content form" id="simple_form" method="post" action="">
+        <h1>Add/Edit Forms</h1>
+        <fieldset>
+          
+          <p>
+            <label for="name" class="required">Form Name</label>
+            <input type="text" name="name" id="name">
+          </p>
+          <p>
+            <label for="Frequency" class="required">Signature Frequency (Months)</label>
+            <input type="text" name="Frequency" id="Frequency">
+          </p>
+          <p>
+            <label for="file">Import form from Centricity</label>
+            <select name="ReportId" id="ReportId">
+                <option value="">None</option>
+                <option value="2">Collection Letter</option>
+                <option value="3">Reminder Letter</option>
+             </select>
+             <input type="file" name="file" id="file" title="Choose a file to upload." value="" />
+          </p>
+          <p class="fieldset with-legend">
+            <span class="legend">Authorizations</span>
+            <input type="radio" name="Authorization" id="Authorization-1" value="1">&nbsp;<label for="Authorization-1">Signature On File</label> 
+            <input type="radio" name="Authorization" id="Authorization-2" value="2">&nbsp;<label for="Authorization-2">Release Pt. Info.</label>
+            <input type="radio" name="Authorization" id="Authorization-3" value="3">&nbsp;<label for="Authorization-3">Privacy Policy</label>
+            <input type="radio" name="Authorization" id="Authorization-4" value="2">&nbsp;<label for="Authorization-4">Benefit Assignment</label>
+          </p>
+          
+        </fieldset>
+        
+        <fieldset class="grey-bg no-margin">
+          <p class="input-with-button">
+            <button type="button">Create</button>
+          </p>
+        </fieldset>
+          
+      </form></div>
+    </section>
+    
+    <div class="clear"></div>
+    
+  </article>
+  
+  <!-- End content -->
+  
+  <footer>
+    
+    <div class="float-left">
+      <a href="#" class="button">Help</a>
+      <a href="#" class="button">About</a>
+    </div>
+    
+    <div class="float-right">
+      <a href="#top" class="button"><img src="images/icons/fugue/navigation-090.png" width="16" height="16"> Page top</a>
+    </div>
+    
+  </footer>
+
+<!--[if lt IE 8]></div><![endif]-->
+<!--[if lt IE 9]></div><![endif]-->
+</body>
+</html>
