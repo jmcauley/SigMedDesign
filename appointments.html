@@ -11,11 +11,11 @@
   <link href="css/form.css" rel="stylesheet" type="text/css">
   <link href="css/standard.css" rel="stylesheet" type="text/css">
   <link href="css/special-pages.css" rel="stylesheet" type="text/css">
+  <link href="css/datepicker.css" rel="stylesheet" type="text/css">
   
   <!-- Comment/uncomment one of these files to toggle between fixed and fluid layout -->
   <!--<link href="css/960.gs.css" rel="stylesheet" type="text/css">-->
   <link href="css/960.gs.fluid.css" rel="stylesheet" type="text/css">
-  <link href="css/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css">
   
   <!-- Custom styles -->
   <link href="css/simple-lists.css" rel="stylesheet" type="text/css">
@@ -30,7 +30,8 @@
   
   <!-- Generic libs -->
   <script type="text/javascript" src="js/html5.js"></script>        <!-- this has to be loaded before anything else -->
-  <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+  <script src="http://cdn.jquerytools.org/1.2.5/jquery.tools.min.js"></script>
+  <script src="http://cdn.jquerytools.org/1.2.5/form/jquery.tools.min.js"></script>
   <script type="text/javascript" src="js/old-browsers.js"></script>   <!-- remove if you do not need older browsers detection -->
   
   <!-- Template libs -->
@@ -45,27 +46,14 @@
   
   <!-- Custom styles lib -->
   <script type="text/javascript" src="js/list.js"></script>
-  <script type="text/javascript" src="js/jquery-ui-1.8.6.custom.min.js"></script>
   
-  <!-- Charts library -->
-  <!--Load the AJAX API-->
-  <script type="text/javascript" src="js/popUpForm.jquery.js"></script>
   
   <script>
   $(document).ready(function() {
-    
-    $('.ajax').popUpForm({
-        container   : '#wizard1',
-        onSuccess   : function() { alert('Thanks for your submission!'); },
-        onError     : function() { alert('Sorry there was an error submitting your form.'); }
-    });
 
     $(function() {
-      $( "#datepicker" ).datepicker({
-        showOn: "button",
-        buttonImage: "images/calendar.gif",
-        buttonImageOnly: true
-      });
+      $(":date").dateinput();
+      
     });
   });
   </script>
@@ -134,7 +122,7 @@
     <section class="grid_4">
 
           <ul class="message no-margin">
-            <li>Appointment Date: <input type="text" id="datepicker" value="11/5/2010"/></li>
+            <li>Appointment Date: <input type="date" id="datepicker" value="Today"/></li>
           </ul>
   
     </section>

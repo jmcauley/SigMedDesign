@@ -60,11 +60,13 @@
                  * creating the dialog otherwise the form doesn't exist
                  * yet to put an event handler to
                  */
+                
                 $(opts.container).bind("submit", function(e) {
                     e.preventDefault();
                     ajaxSubmit($this[0]);
                 });
-
+                
+                
                 // create a binding for the link passed to the plug-in
                 $this.bind("click", function(e) {
                     e.preventDefault();
