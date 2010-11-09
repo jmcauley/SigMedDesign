@@ -37,7 +37,7 @@
 <!--[if lt IE 9]><div class="ie"><![endif]-->
 <!--[if lt IE 8]><div class="ie7"><![endif]-->
 	
-	<section>
+	<section id="wizard1">
 		<div class="block-border"><form class="block-content form inline-medium-label" name="login-form" id="login-form" method="post" action="">
 				
 			<h1>Assign &amp; Review Forms</h1>
@@ -65,20 +65,54 @@
 			<small>Choose Forms</small>
 			<h2 class="bigger">Forms</h2>
 			
-			<p class="required">
-				<label for="name"><span class="big">Website name</span></label>
-				<input type="text" name="name" id="name" class="full-width" value="">
-			</p>
-			<p class="required">
-				<label for="pass"><span class="big">Description</span><br>
-				<small>For search engines</small></label>
-				<textarea name="description" id="description" class="full-width" rows="8"></textarea>
-			</p>
-			
-			<p>
-				<input type="checkbox" name="index" id="index" value="1" class="switch" checked="checked"> &nbsp;
-				<label for="index" class="inline grey">Allow search engines to index this site</label>
-			</p>
+			<div class="no-margin"><table class="table" cellspacing="0" width="100%">
+        
+          <thead>
+            <tr>
+              <th class="black-cell"><span></span></th>
+              <th scope="col">
+                <span class="column-sort">
+                  <a href="#" title="Sort up" class="sort-up active"></a>
+                  <a href="#" title="Sort down" class="sort-down"></a>
+                </span>
+                Title
+              </th>
+              <th scope="col">
+                <span class="column-sort">
+                  <a href="#" title="Sort up" class="sort-up"></a>
+                  <a href="#" title="Sort down" class="sort-down"></a>
+                </span>
+                Date
+              </th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            
+            <tr>
+              <th scope="row" class="table-check-cell"><input type="checkbox" name="selected_1" id="table-selected-1" value="1"></th>
+              <td>Form 1</td>
+              <td>02-05-2010</td>
+            </tr>
+            
+            <tr>
+              <th scope="row" class="table-check-cell"><input type="checkbox" name="selected_2" id="table-selected-2" value="2"></th>
+              <td>Form 2</td>
+              <td>02-05-2010</td>
+            </tr>
+            
+            <tr>
+              <th scope="row" class="table-check-cell"><input type="checkbox" name="selected_3" id="table-selected-3" value="3"></th>
+              <td>Form 3</td>
+              <td>02-05-2010</td>
+            </tr>
+          </tbody>
+        
+        </table></div>
+        
+        <ul class="message no-margin">
+          <li>3 Forms Found</li>
+        </ul>
 			
 			<p style="text-align:right;">
 				<button type="submit">Next</button>
