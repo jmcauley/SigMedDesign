@@ -10,6 +10,7 @@
   <link href="css/common.css" rel="stylesheet" type="text/css">
   <link href="css/form.css" rel="stylesheet" type="text/css">
   <link href="css/standard.css" rel="stylesheet" type="text/css">
+  <link href="css/special-pages.css" rel="stylesheet" type="text/css">
   
   <!-- Comment/uncomment one of these files to toggle between fixed and fluid layout -->
   <!--<link href="css/960.gs.css" rel="stylesheet" type="text/css">-->
@@ -21,6 +22,7 @@
   <link href="css/block-lists.css" rel="stylesheet" type="text/css">
   <link href="css/table.css" rel="stylesheet" type="text/css">
   <link href="css/calendars.css" rel="stylesheet" type="text/css">
+  <link href="css/wizard.css" rel="stylesheet" type="text/css">
   
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -47,38 +49,25 @@
   
   <!-- Charts library -->
   <!--Load the AJAX API-->
-  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="js/popUpForm.jquery.js"></script>
   
   <script>
-  $(function() {
-    $( "#datepicker" ).datepicker({
-      showOn: "button",
-      buttonImage: "images/calendar.gif",
-      buttonImageOnly: true
+  $(document).ready(function() {
+    
+    $('.ajax').popUpForm({
+        container   : '#wizard1',
+        onSuccess   : function() { alert('Thanks for your submission!'); },
+        onError     : function() { alert('Sorry there was an error submitting your form.'); }
+    });
+
+    $(function() {
+      $( "#datepicker" ).datepicker({
+        showOn: "button",
+        buttonImage: "images/calendar.gif",
+        buttonImageOnly: true
+      });
     });
   });
-  </script>
-  
-  <script type="text/javascript">
-    $(function (){
-        $('a.ajax').click(function() {
-            var url = '/scheduler_form_selection.html';
-            var dialog = $('<div style="display:hidden"></div>').appendTo('body');
-            // load remote content
-            dialog.load(
-                url, 
-                {},
-                function (responseText, textStatus, XMLHttpRequest) {
-                    dialog.dialog({
-                      width: 600,
-                      modal: true
-                    });
-                }
-            );
-            //prevent the browser to follow the link
-            return false;
-        });
-    });
   </script>
 
 </head>
@@ -164,7 +153,7 @@
               <tr>
                 <td>
                   <ul class="events">
-                    <li><a class="ajax" href="#"><b>9:15</b> Titan Lachrymose</a></li>
+                    <li><a class="ajax" href="/wizard.html"><b>9:15</b> Titan Lachrymose</a></li>
                     <li><a href="#"><b>9:45</b> Johson Masters</a></li>
                     <li><a href="#"><b>10:45</b> Sarah Turnbull</a></li>
                     <li><a href="#"><b>11:15</b> Leslie Wakeum</a></li>
@@ -258,7 +247,7 @@
     </div>
     
   </footer>
-
+  <div id="dialog" style="display:hidden"></div>
 <!--[if lt IE 8]></div><![endif]-->
 <!--[if lt IE 9]></div><![endif]-->
 </body>
