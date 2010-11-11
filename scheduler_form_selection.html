@@ -39,17 +39,6 @@
   
       /* now we are inside the onBeforeClick event */
   
-      // ensure that the "terms" checkbox is checked.
-      var forms = $("#table-selected-1");
-      if (index > 0 && !forms.get(0).checked)  {
-        alert("First form must be checked!");
-  
-        // when false is returned, the user cannot advance to the next tab
-        return false;
-      }
-  
-      // everything is ok. remove possible red highlight from the terms
-      forms.parent().removeClass("error");
     });
     
     var api = $("ol.tabs", wizard).data("tabs");
@@ -168,7 +157,13 @@
             <button type="button" class="grey">Need help?</button>
           </p>
         </div>
-        <div  id="tab2content">Second pane. You can go to Review with normal <a href="#third">anchor links</a></div>
+        <div  id="tab2content">
+          <p>Second pane.</p> 
+          <p style="text-align:right;">
+            <button type="button" class="next">Next</button>
+            <button type="button" class="grey">Need help?</button>
+          </p>
+        </div>
         <div  id="tab3content">Third tab content</div>
       </div>
 </form>
