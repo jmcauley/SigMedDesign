@@ -1,7 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+	<title>Select Forms</title>
+	<meta charset="utf-8">
 	
+	<!-- Global stylesheets -->
+	<link href="css/reset.css" rel="stylesheet" type="text/css">
+	<link href="css/common.css" rel="stylesheet" type="text/css">
+	<link href="css/form.css" rel="stylesheet" type="text/css">
+	<link href="css/standard.css" rel="stylesheet" type="text/css">
+	<link href="css/special-pages.css" rel="stylesheet" type="text/css">
+	<link href="css/table.css" rel="stylesheet" type="text/css">
+	
+	<!-- Custom styles -->
+	<link href="css/wizard.css" rel="stylesheet" type="text/css">
+	
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="icon" type="image/png" href="favicon-large.png">
+	
+	<!-- Generic libs -->
+	<script type="text/javascript" src="js/html5.js"></script><!-- this has to be loaded before anything else -->
+	<script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script>
+	<script type="text/javascript" src="js/old-browsers.js"></script>		<!-- remove if you do not need older browsers detection -->
+	
+	<!-- Template core functions -->
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/standard.js"></script>
+	<!--[if lte IE 8]><script type="text/javascript" src="js/standard.ie.js"></script><![endif]-->
+	
+	<script>
+  $(document).ready(function() {
+
+    var wizard = $("#wizard1");
+    // enable tabs that are contained within the wizard
+    $("ol.tabs", wizard).tabs("div.panes > div", function(event, index) {
+  
+      /* now we are inside the onBeforeClick event */
+  
+      // ensure that the "terms" checkbox is checked.
+      var forms = $("#table-selected-1");
+      if (index > 0 && !forms.get(0).checked)  {
+        alert("First form must be checked!");
+  
+        // when false is returned, the user cannot advance to the next tab
+        return false;
+      }
+  
+      // everything is ok. remove possible red highlight from the terms
+      forms.parent().removeClass("error");
+    });
+    
+    var api = $("ol.tabs", wizard).data("tabs");
+    // "next tab" button
+    $("button.next", wizard).click(function() {
+      api.next();
+    });
+  });
+  </script>
 </head>
 
 <!-- the 'special-page' class is only an identifier for scripts -->
@@ -15,100 +72,114 @@
 				
 			<h1>Assign &amp; Review Forms</h1>
 			
-			<ol class="wizard-steps no-margin">
+			<!-- the tabs -->
+			<ol class="wizard-steps no-margin tabs">
 				<li>
-					<a href="#">
+					<a href="#first">
 						<span class="number">1<span class="number"></span></span>
 						Forms
 					</a>
 				</li>
 				<li class="disabled">
-					<a href="#">
+					<a href="#second">
 						<span class="number">2</span>
 						Device
 					</a>
 				</li>
 				<li class="disabled">
+				  <a href="#third">
 					<span class="number">3</span>
 					Review
+					</a>
 				</li>
 			</ol>
-			
-			<span class="number bigger">1</span>
-			<small>Choose Forms</small>
-			<h2 class="bigger">Forms</h2>
-			
-			<div class="no-margin"><table class="table" cellspacing="0" width="100%">
-        
-          <thead>
-            <tr>
-              <th class="grey-cell"><span></span></th>
-              <th scope="col">
-                <span class="column-sort">
-                  <a href="#" title="Sort up" class="sort-up active"></a>
-                  <a href="#" title="Sort down" class="sort-down"></a>
-                </span>
-                Title
-              </th>
-              <th scope="col">
-                <span class="column-sort">
-                  <a href="#" title="Sort up" class="sort-up"></a>
-                  <a href="#" title="Sort down" class="sort-down"></a>
-                </span>
-                Date
-              </th>
-            </tr>
-          </thead>
+
+      <!-- tab "panes" -->
+      <div class="panes">
+        <div id="tab1content">
+          <div class="no-margin"><table class="table" cellspacing="0" width="100%">
+            
+              <thead>
+                <tr>
+                  <th class="grey-cell"><span></span></th>
+                  <th scope="col">
+                    <span class="column-sort">
+                      <a href="#" title="Sort up" class="sort-up active"></a>
+                      <a href="#" title="Sort down" class="sort-down"></a>
+                    </span>
+                    Title
+                  </th>
+                  <th scope="col">
+                    <span class="column-sort">
+                      <a href="#" title="Sort up" class="sort-up"></a>
+                      <a href="#" title="Sort down" class="sort-down"></a>
+                    </span>
+                    Date
+                  </th>
+                </tr>
+              </thead>
+              
+              <tbody>
+                
+                <tr>
+                  <th scope="row" class="table-check-cell"><input type="checkbox" name="selected_1" id="table-selected-1" value="1"></th>
+                  <td>Form 1</td>
+                  <td>02-05-2010</td>
+                </tr>
+                
+                <tr>
+                  <th scope="row" class="table-check-cell"><input type="checkbox" name="selected_2" id="table-selected-2" value="2"></th>
+                  <td>Form 2</td>
+                  <td>02-05-2010</td>
+                </tr>
+                
+                <tr>
+                  <th scope="row" class="table-check-cell"><input type="checkbox" name="selected_3" id="table-selected-3" value="3"></th>
+                  <td>Form 3</td>
+                  <td>02-05-2010</td>
+                </tr>
+                 <tr>
+                  <th scope="row" class="table-check-cell"><input type="checkbox" name="selected_1" id="table-selected-1" value="1"></th>
+                  <td>Form 1</td>
+                  <td>02-05-2010</td>
+                </tr>
+                
+                <tr>
+                  <th scope="row" class="table-check-cell"><input type="checkbox" name="selected_2" id="table-selected-2" value="2"></th>
+                  <td>Form 2</td>
+                  <td>02-05-2010</td>
+                </tr>
+                
+                <tr>
+                  <th scope="row" class="table-check-cell"><input type="checkbox" name="selected_3" id="table-selected-3" value="3"></th>
+                  <td>Form 3</td>
+                  <td>02-05-2010</td>
+                </tr>
+              </tbody>
+            
+            </table></div>
+            
+            <ul class="message no-margin">
+              <li>3 Forms Found</li>
+            </ul>
           
-          <tbody>
-            
-            <tr>
-              <th scope="row" class="table-check-cell"><input type="checkbox" name="selected_1" id="table-selected-1" value="1"></th>
-              <td>Form 1</td>
-              <td>02-05-2010</td>
-            </tr>
-            
-            <tr>
-              <th scope="row" class="table-check-cell"><input type="checkbox" name="selected_2" id="table-selected-2" value="2"></th>
-              <td>Form 2</td>
-              <td>02-05-2010</td>
-            </tr>
-            
-            <tr>
-              <th scope="row" class="table-check-cell"><input type="checkbox" name="selected_3" id="table-selected-3" value="3"></th>
-              <td>Form 3</td>
-              <td>02-05-2010</td>
-            </tr>
-             <tr>
-              <th scope="row" class="table-check-cell"><input type="checkbox" name="selected_1" id="table-selected-1" value="1"></th>
-              <td>Form 1</td>
-              <td>02-05-2010</td>
-            </tr>
-            
-            <tr>
-              <th scope="row" class="table-check-cell"><input type="checkbox" name="selected_2" id="table-selected-2" value="2"></th>
-              <td>Form 2</td>
-              <td>02-05-2010</td>
-            </tr>
-            
-            <tr>
-              <th scope="row" class="table-check-cell"><input type="checkbox" name="selected_3" id="table-selected-3" value="3"></th>
-              <td>Form 3</td>
-              <td>02-05-2010</td>
-            </tr>
-          </tbody>
-        
-        </table></div>
-        
-        <ul class="message no-margin">
-          <li>3 Forms Found</li>
-        </ul>
+          <p style="text-align:right;">
+            <button type="button" class="next">Next</button>
+            <button type="button" class="grey">Need help?</button>
+          </p>
+        </div>
+        <div  id="tab2content">Second pane. You can go to Review with normal <a href="#third">anchor links</a></div>
+        <div  id="tab3content">Third tab content</div>
+      </div>
+</form>
+</div>
+
 			
-			<p style="text-align:right;">
-				<button type="submit">Next</button>
-				<button type="button" class="grey">Need help?</button>
-			</p>
-		</form></div>
+			
+			
+			
+			
+			
 	</section>
 
 <!--[if lt IE 8]></div><![endif]-->
