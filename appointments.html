@@ -12,6 +12,7 @@
   <link href="css/standard.css" rel="stylesheet" type="text/css">
   <link href="css/special-pages.css" rel="stylesheet" type="text/css">
   <link href="css/datepicker.css" rel="stylesheet" type="text/css">
+  <link href="css/overlay-apple.css" rel="stylesheet" type="text/css">
   
   <!-- Comment/uncomment one of these files to toggle between fixed and fluid layout -->
   <!--<link href="css/960.gs.css" rel="stylesheet" type="text/css">-->
@@ -60,7 +61,7 @@
       // it is assumed to be the onBeforeLoad event listener
       $("a[rel]").overlay({
     
-        mask: 'darkred',
+        mask: 'lightblue',
         effect: 'apple',
     
         onBeforeLoad: function() {
@@ -160,7 +161,7 @@
               <tr>
                 <td>
                   <ul class="events">
-                    <li><a class="ajax" href="/scheduler_form_selection.html"><b>9:15</b> Titan Lachrymose</a></li>
+                    <li><a rel="#overlay" href="/scheduler_form_selection.html"><b>9:15</b> Titan Lachrymose</a></li>
                     <li><a href="#"><b>9:45</b> Johson Masters</a></li>
                     <li><a href="#"><b>10:45</b> Sarah Turnbull</a></li>
                     <li><a href="#"><b>11:15</b> Leslie Wakeum</a></li>
@@ -237,7 +238,6 @@
     
     
     <div class="clear"></div>
-    
   </article>
   
   <!-- End content -->
@@ -254,7 +254,13 @@
     </div>
     
   </footer>
-  <div id="dialog" style="display:hidden"></div>
+  <!-- overlayed element -->
+  <div class="apple_overlay" id="overlay">
+  
+    <!-- the external content is loaded inside this tag -->
+    <div class="contentWrap"></div>
+  
+  </div>
 <!--[if lt IE 8]></div><![endif]-->
 <!--[if lt IE 9]></div><![endif]-->
 </body>
